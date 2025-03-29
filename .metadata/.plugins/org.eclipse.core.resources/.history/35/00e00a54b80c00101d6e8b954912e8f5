@@ -1,5 +1,0 @@
-package com.projectPackage.springTaskProject;
-
-public enum Priority {
-
-}
