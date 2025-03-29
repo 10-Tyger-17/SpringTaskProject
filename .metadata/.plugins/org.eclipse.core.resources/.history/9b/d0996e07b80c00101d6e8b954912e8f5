@@ -1,0 +1,6 @@
+package com.projectPackage.springTaskProject;
+
+@Entity
+public class Task {
+	
+}

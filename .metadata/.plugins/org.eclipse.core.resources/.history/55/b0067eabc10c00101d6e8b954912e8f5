@@ -1,0 +1,46 @@
+package com.projectPackage.springTaskProject;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class TaskController {
+	@Autowired
+	TaskRepository taskRespository;
+
+	// Create
+	@PostMapping("/tasks")
+	public Task create(@RequestBody Map<String, String> body) {
+		String name = body.get("name");
+		String desc = body.get("description");
+		LocalDate date = LocalDate.parse(body.get("due_date"));
+		Priority priority = Priority.valueOf(body.get("priority"));
+		return taskRespository.save(new Task(name, desc, date, priority));
+	}
+
+	// Read
+	@GetMapping("/tasks")
+	public List<Task> index() {
+		return taskRespository.findAll();
+	}
+	
+	// Update
+	@PutMapping("/blog/{id}")
+    public Task update(@PathVariable String id, @RequestBody Map<String, String> body){
+        int blogId = Integer.parseInt(id);
+        // getting blog
+        Blog blog = blogRespository.findOne(blogId);
+        blog.setTitle(body.get("title"));
+        blog.setContent(body.get("content"));
+        return blogRespository.save(blog);
+    }
+}
