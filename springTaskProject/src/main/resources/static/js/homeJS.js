@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	const buttonUpdateTask = document.getElementById("updateTaskButton");
 
 	buttonAddTask.onclick = function() {
-		window.open("addTask", "_self", "width=400,height=400");
+		window.open("addTask", "_self");
 	}
 });
 

@@ -6,15 +6,18 @@ buttonBack.addEventListener("click",function(){
 });
 
 buttonAddTask.addEventListener("click",function(event){
-    const formData = new FormData(event.target);
+	event.preventDefault();
+	const form = event.currentTarget.form;
+	const formData = new FormData(form);
+	
     const data = {
-      name: formData.get('name'),
-      description: formData.get('description'),
-      due_date: formData.get('due_date'),
-      priority: formData.get('priority')
+      name: formData.get('fname'),
+      description: formData.get('fdescription'),
+      due_date: formData.get('fdate'),
+      priority: formData.get('priority').toUpperCase()
     };
   
-    fetch('http://localhost:8080/api/addTask', {
+    fetch('/api/addTask', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -25,7 +28,7 @@ buttonAddTask.addEventListener("click",function(event){
     .then(response => response.json())
     .then(data => {
         console.log("Recieved Data: ", data)
-        displayData(data);
+		window.open("/", "_self");
     })
     
     .catch(error => console.error("Error fetching data, "+error));
