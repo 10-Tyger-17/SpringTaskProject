@@ -6,6 +6,14 @@ document.addEventListener("DOMContentLoaded", function () {
             displayData(data);
         })
         .catch(error => console.error("Error fetching data, "+error));
+	
+	const buttonAddTask = document.getElementById("addTask");
+	const buttonDeleteTask = document.getElementById("deleteTaskButton");
+	const buttonUpdateTask = document.getElementById("updateTaskButton");
+
+	buttonAddTask.onclick = function() {
+		window.open("addTask", "_self", "width=400,height=400");
+	}
 });
 
 function displayData(items){
@@ -14,7 +22,7 @@ function displayData(items){
 
     items.forEach(item=>{
         const li=document.createElement("li");
-        li.textContent = `Name: ${item.name}, ID: ${item.id}, Description: ${item.description}, Date: ${item.due_date}, Priority: ${item.priority}`;
+        li.textContent = `ID: ${item.id}, Name: ${item.name}, Description: ${item.description}, Date: ${item.due_date}, Priority: ${item.priority}`;
         list.appendChild(li);
     });
 }

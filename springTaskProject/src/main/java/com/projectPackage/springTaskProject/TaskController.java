@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -20,7 +21,7 @@ public class TaskController {
 	TaskRepository taskRespository;
 
 	// Create
-	@PostMapping("/tasks")
+	@PostMapping("/api/addTask")
 	public Task create(@RequestBody Map<String, String> body) {
 		String name = body.get("name");
 		String desc = body.get("description");
