@@ -30,7 +30,7 @@ public class TaskController {
 	}
 
 	// Read
-	@GetMapping("/tasks")
+	@GetMapping("/api/showTasks")
 	public List<Task> index() {
 		return taskRespository.findAll();
 	}
@@ -53,7 +53,7 @@ public class TaskController {
     }
 	
 	// Delete
-	@DeleteMapping("tasks/{id}")
+	@DeleteMapping("/api/deleteTask/{id}")
     public boolean delete(@PathVariable String id){
         int taskId = Integer.parseInt(id);
         taskRespository.deleteById(taskId);

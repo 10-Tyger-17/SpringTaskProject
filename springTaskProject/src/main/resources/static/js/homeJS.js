@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    fetch("/tasks")
+    fetch("/api/showTasks")
         .then(response => response.json())
         .then(data => {
             console.log("Recieved Data: ", data)
@@ -8,12 +8,16 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => console.error("Error fetching data, "+error));
 	
 	const buttonAddTask = document.getElementById("addTask");
-	const buttonDeleteTask = document.getElementById("deleteTaskButton");
-	const buttonUpdateTask = document.getElementById("updateTaskButton");
+	const buttonDeleteTask = document.getElementById("deleteTask");
+	const buttonUpdateTask = document.getElementById("updateTask");
 
 	buttonAddTask.onclick = function() {
 		window.open("addTask", "_self");
 	}
+
+    buttonDeleteTask.onclick = function() {
+        window.open("deleteTask", "_self");
+    }
 });
 
 function displayData(items){

@@ -9,4 +9,9 @@ public class GeneralController {
     public String showAddTaskPage() {
         return "addTask"; 
     }
+	
+	@RequestMapping("/deleteTask")
+    public String showDeleteTaskPage() {
+        return "deleteTask"; 
+    }
 }
