@@ -14,4 +14,9 @@ public class GeneralController {
     public String showDeleteTaskPage() {
         return "deleteTask"; 
     }
+	
+	@RequestMapping("/updateTask")
+	public String showShowTasksPage() {
+		return "updateTask";
+	}
 }

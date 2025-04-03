@@ -18,6 +18,10 @@ document.addEventListener("DOMContentLoaded", function () {
     buttonDeleteTask.onclick = function() {
         window.open("deleteTask", "_self");
     }
+
+    buttonUpdateTask.onclick = function() {
+        window.open("updateTask", "_self");
+    }
 });
 
 function displayData(items){

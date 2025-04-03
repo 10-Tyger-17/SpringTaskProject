@@ -35,8 +35,19 @@ public class TaskController {
 		return taskRespository.findAll();
 	}
 	
+	@GetMapping("/api/showTask/{id}")
+	public Task showById(@PathVariable String id) {
+		int taskId = Integer.parseInt(id);
+		Optional<Task> taskFound = taskRespository.findById(taskId);
+		if (taskFound.isEmpty()) {
+			return null;
+		} else {
+			return taskFound.get();
+		}
+	}
+	
 	// Update
-	@PutMapping("/tasks/{id}")
+	@PutMapping("/api/updateTask/{id}")
     public Task update(@PathVariable String id, @RequestBody Map<String, String> body){
         int taskId = Integer.parseInt(id);
         Optional<Task> taskFound = taskRespository.findById(taskId);
@@ -47,7 +58,7 @@ public class TaskController {
         	task.setName(body.get("name"));
             task.setDescription(body.get("description"));
             task.setDue_date(LocalDate.parse(body.get("due_date")));
-            task.setPriority(Priority.valueOf(body.get("priority")));
+            task.setPriority(Priority.valueOf(body.get("priority").toUpperCase()));
             return taskRespository.save(task);
         }
     }
